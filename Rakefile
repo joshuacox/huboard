@@ -3,12 +3,20 @@
 desc "build and run Docker container"
 task :default => [:build_docker, :run_docker]
 
-desc "default"
+desc "build and run Debug Docker container"
+task :debug => [:build_docker, :debug_docker]
+
+desc "Remove and kill docker container"
 task :rm => [:kill, :rm_docker]
 
 desc "Run Docker image"
 task :run_docker do
-  sh 'docker run --name huboard -P --cidfile="cid" -t joshuacox/huboard'
+  sh 'docker run --name huboard2 -P --cidfile="cid" -t joshuacox/huboard2'
+end
+
+desc "Debug Run Docker image"
+task :debug_docker do
+  sh 'docker run --name huboard2 -P --cidfile="cid" -t joshuacox/huboard2 /bin/bash'
 end
 
 desc "Exec bash in Docker image"
@@ -29,5 +37,5 @@ end
 
 desc "Build Docker image"
 task :build_docker do
-  sh 'docker build -t joshuacox/huboard .'
+  sh 'docker build -t joshuacox/huboard2 .'
 end
