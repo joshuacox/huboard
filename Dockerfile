@@ -2,6 +2,8 @@ FROM joshuacox/huboard-foreman-base
 
 ENV SEGMENTIO_KEY HUBOARD_SEGMENTIO_KEY
 
+#RUN cd /app;git pull
+
 ADD .env /app/.env
 RUN echo SESSION_SECRET=$(openssl rand -base64 32) >>/app/.env
 
